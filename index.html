@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java script </title>
+</head>
+<body>
+    <h1>Student Regsiteartion Form</h1>
+    <style>
+        h1{
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 60px;
+            color: green;
+            background-color: yellow;
+        }
+        form{
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+
+    <form action="" onsubmit="return formval()" method="post">
+        <div>
+            
+            <label for="">Roll No</label>
+            <input type="text" placeholder="Enter Stu_Roll No" id="K">
+            <br>
+            <span id="k"></span>
+            <br>
+
+        <label for="">First Name: </label>
+        <input type="text" placeholder="Enter the First Name" id="A">
+        <br>
+        <span id="a" style="color: red;"></span>
+        <br>
+        <label for="">Last Name: </label>
+        <input type="text" placeholder="Enter the last Name" id="B">
+        <br>
+        <span id="b" style="color: red;"></span>
+        <br>
+        <label for="">UserName: </label>
+        <input type="text" placeholder="Enter the user name" id="C">
+        <br>
+        <span id="c" style="color: red;"></span>
+        <br>
+        <label for="">password: </label>
+        <input type="text" placeholder="Enter the password" id="D">
+        <br>
+        <span id="d" style="color: red;"></span>
+        <br>
+        <label for="">Confirm Password: </label>
+        <input type="text" placeholder="Confirm the Password" id="E">
+        <br>
+        <span id="e" style="color: red;"></span>
+        <br>
+        <label for="">Gender</label>
+        <input type="radio" value="Male" name="gen" > Male
+        <input type="radio" name="gen" value="Female" >Female
+        <br>
+        <span style="color: red;" id="h"></span>
+        <br>
+        <input type="submit" value="Regsiter">
+        </div>
+
+        <style>
+            div{
+                background-color: bisque;
+                margin-left: 20%;
+                margin-right: 20%;
+                margin-top: 10%;
+                padding-top: 30px;
+                
+            }
+        </style>
+
+
+
+    </form>
+
+    <script>
+        function formval(){
+            let fname = document.getElementById("A").value
+            let obj1=fname.match(/[A-Z]{1}[a-z]*/g)
+            let lname =document.getElementById("B").value
+            let obj2 = lname.match(/[A-Z]{1}[a-z]*/g)
+            let uname=document.getElementById("C").value
+            let obj3 = uname.match (/[A-Z]{1}[a-z][0-9]*/g)
+            let pass = document.getElementById("D").value
+            let obj4 = pass.match(/[A-Z]{1}[a-z]{4}[0-9]{5}/g)
+            let pass1 = document.getElementById("E").value
+            let obj5 = pass.match(/[A-Z]{1}[a-z]{4}[0-9]{5}/g)
+            let gender=document.getElementsByName("gen")
+            let rno = document.getElementById("K").value
+            let obj6 = rno.match(/[1-9]{5}/g)
+
+
+            
+             if (rno == null || rno == ""){
+                document.getElementById("k").innerHTML="*** Enter the roll no ***"
+                return false
+            }
+
+            else if (obj6 == "" || obj6 == null){
+                document.getElementById("k").innerHTML="*** Roll number mustbe 5 digts ***"
+                return false
+
+            }
+
+           else if (fname == "" || fname == null){
+                // window.alert("Enter the user name")
+                document.getElementById("a").innerHTML="*** Enter the First Name ***"
+                 document.getElementById("k").innerHTML=""
+
+                return false
+            }
+
+            else if (obj1 == "" || obj1 == null){
+                // window.alert("Enter the user name")
+                document.getElementById("a").innerHTML="*** First letter should be captal eg:Abc ***"
+                
+
+                return false
+            }
+
+               
+
+            else  if (lname == "" || lname == null){
+                document.getElementById("b").innerHTML="*** Enter the Last Name ***"
+                document.getElementById("a").innerHTML=""
+                return false
+            }
+
+              else  if (obj2 == "" || obj2 == null){
+                document.getElementById("b").innerHTML="*** First letter should be captal eg:Abc ***"
+                return false
+            }
+
+             else  if (uname == "" || uname == null){
+                document.getElementById("c").innerHTML="*** Enter the User Name ***"
+                 document.getElementById("b").innerHTML=""
+                
+                return false
+            }
+
+              else  if (obj3 == "" || obj3 == null){
+                document.getElementById("c").innerHTML="*** First letter should be captal eg:Abc123 ***"
+                return false
+            }
+
+            
+             else  if (pass == "" || pass == null){
+                document.getElementById("d").innerHTML="*** Enter the password  ex:Abcde12345 ***"
+                 document.getElementById("c").innerHTML=""
+                return false
+            }
+
+              else  if (obj4 == "" || obj4 == null){
+                document.getElementById("d").innerHTML="*** enter the password in this formate ex:Abcde12345 ***"
+                return false
+            }
+
+            else if ( pass1 == "" || pass1 == null){
+                document.getElementById("e").innerHTML= "*** Re-ENter the Same Password ***"
+                 document.getElementById("d").innerHTML=""
+                return false
+            }
+
+            else if (pass != pass1 ){
+                document.getElementById("e").innerHTML="*** Enter the same password ***"
+                return false
+            }
+
+            else if (obj5 == "" || obj5 == null){
+                 document.getElementById("e").innerHTML="*** Re-Enter the same password ***"
+                 return false
+            }
+
+            else if ( gender[0].checked== false && gender[1].checked == false){
+                document.getElementById("h").innerHTML="plese slect any one option"
+                 document.getElementById("e").innerHTML=""
+                return false
+            }
+
+
+
+
+
+
+        }
+
+    </script>
+
+    
+   
+
+</body>
+</html>
